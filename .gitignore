@@ -1,3 +1,5 @@
-# Don’t upload the locally installed data files
+#Ignore unloaded data files
 data/processed/
 data/raw/
+
+Homework*

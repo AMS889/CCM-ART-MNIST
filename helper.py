@@ -7,13 +7,13 @@ from torchvision import utils
 from sklearn.preprocessing import MinMaxScaler
 
 def get_random_subset(digit, npairs=20):
-	"""
-	Get randomly selected pairs of a single digit.
-	Returns indices of images and the image tensors
-	#### PARAMETERS ####
-	digit: integer between 0 and 9
-	npairs: default=20; number of pairs to return
-	"""
+    """
+    Get randomly selected pairs of a single digit.
+    Returns indices of images and the image tensors
+    #### PARAMETERS ####
+    digit: integer between 0 and 9
+    npairs: default=20; number of pairs to return
+    """
     ix = np.where(y_test==int(digit))[0]
     np.random.shuffle(ix)
     ix1 = ix[:npairs]
@@ -27,11 +27,11 @@ def get_random_subset(digit, npairs=20):
     return ix1, ix2, images1, images2
 
 def imshow(img):
-	"""
-	Display an image from the MNIST data set
-	#### PARAMETERS ####
-	img: torch tensor with two individual arrays inside for side-by-side comparison
-	"""
+    """
+    Display an image from the MNIST data set
+    #### PARAMETERS ####
+    img: torch tensor with two individual arrays inside for side-by-side comparison
+    """
     npimg = img.numpy()
     npscale = np.zeros(npimg.shape)
     for i,x in enumerate(npimg):
@@ -40,16 +40,16 @@ def imshow(img):
     plt.axis('off')
     
 def plot_image_pairs(images1,images2,scores_net=[],scores_people=[], save=False, fname='digits.png'):
-	"""
-	Plot image pairs for comparison
-	#### PARAMETERS ####
-	images1: torch tensor
-	images2: torch tensor to compare to impages1
-	scores_net: default=[]; list of NN similarity scores
-	scores_people: default=[]; list of human similarity scores
-	save: default=False; binary indicator to save image file
-	fname: default='digits.png'; file name for image file if save==True.
-	"""
+    """
+    Plot image pairs for comparison
+    #### PARAMETERS ####
+    images1: torch tensor
+    images2: torch tensor to compare to impages1
+    scores_net: default=[]; list of NN similarity scores
+    scores_people: default=[]; list of human similarity scores
+    save: default=False; binary indicator to save image file
+    fname: default='digits.png'; file name for image file if save==True.
+    """
     npairs = images1.shape[0]
     plt.figure(1,figsize=(npairs/5, npairs*2))
     assert images2.shape[0] == npairs

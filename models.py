@@ -16,13 +16,13 @@ def get_model(n_layers, dropout_rate=0.2, n_filters=10, filter_size=5, fc_units=
     """
     Returns a CNN with n_layers number of layers and specified hyperparameters
     """
-    if layers == 1:
+    if n_layers == 1:
         return Net1(dropout_rate=dropout_rate, n_filters=n_filters, filter_size=filter_size, fc_units=fc_units)
-    elif layers == 2:
+    elif n_layers == 2:
         return Net2(dropout_rate=dropout_rate, n_filters=n_filters, filter_size=filter_size, fc_units=fc_units)
-    elif layers == 3:
+    elif n_layers == 3:
         return Net3(dropout_rate=dropout_rate, n_filters=n_filters, filter_size=filter_size, fc_units=fc_units)
-    elif layers == 4:
+    elif n_layers == 4:
         return Net4(dropout_rate=dropout_rate, n_filters=n_filters, filter_size=filter_size, fc_units=fc_units)
     else:
         raise ValueError('Invalid number of layers. Must be between 1 and 4.')

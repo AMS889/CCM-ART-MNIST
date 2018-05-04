@@ -12,7 +12,10 @@ from torchvision import datasets, transforms, utils
 rs = 2018
 random.seed(rs)
 
-def get_model(layers, dropout_rate=0.2, n_filters=10, filter_size=5, fc_units=50):
+def get_model(n_layers, dropout_rate=0.2, n_filters=10, filter_size=5, fc_units=50):
+    """
+    Returns a CNN with n_layers number of layers and specified hyperparameters
+    """
     if layers == 1:
         return Net1(dropout_rate=dropout_rate, n_filters=n_filters, filter_size=filter_size, fc_units=fc_units)
     elif layers == 2:

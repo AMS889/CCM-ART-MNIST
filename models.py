@@ -12,6 +12,20 @@ from torchvision import datasets, transforms, utils
 rs = 2018
 random.seed(rs)
 
+def get_model(layers, dropout_rate=0.2, n_filters=10, filter_size=5, fc_units=50):
+    if layers == 1:
+        return Net1(dropout_rate=dropout_rate, n_filters=n_filters, filter_size=filter_size, fc_units=fc_units)
+    elif layers == 2:
+        return Net2(dropout_rate=dropout_rate, n_filters=n_filters, filter_size=filter_size, fc_units=fc_units)
+    elif layers == 3:
+        return Net3(dropout_rate=dropout_rate, n_filters=n_filters, filter_size=filter_size, fc_units=fc_units)
+    elif layers == 4:
+        return Net4(dropout_rate=dropout_rate, n_filters=n_filters, filter_size=filter_size, fc_units=fc_units)
+    else:
+        raise ValueError('Invalid number of layers. Must be between 1 and 4.')
+
+
+
 class Net1(nn.Module) :
     """
     Implements a trainable CNN with one convolutional layer and two fully connected layers

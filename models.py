@@ -51,7 +51,7 @@ class Net1(nn.Module) :
     def forward(self, x) :
         "Stacks up the network layers, with the simplistic relu nonlinearity in-between."
         x1 = F.relu(F.max_pool2d(self.conv1(x), 2))
-        x2 = x1.view(-1, 10*14*14)
+        x2 = x1.view(-1, self.n_filters*14*14)
         x2 = F.relu(self.fc1(x2))
         output = F.dropout(x2, p=self.dropout_rate, training=self.training)
         output = F.log_softmax(self.fc2(output), dim=1)

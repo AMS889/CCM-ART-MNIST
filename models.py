@@ -147,7 +147,7 @@ class Net4(nn.Module) :
         x4 = F.relu(F.max_pool2d(self.conv4(x3), 2))
         x5 = x4.view(-1, self.n_filters*8*1*1)
         x5 = F.relu(self.fc1(x5))
-        output = F.dropout(x5, p=self.dropoutrate, training=self.training)
+        output = F.dropout(x5, p=self.dropout_rate, training=self.training)
         output = F.log_softmax(self.fc2(output), dim=1)
         return (output, x1, x2, x3, x4, x5)
 

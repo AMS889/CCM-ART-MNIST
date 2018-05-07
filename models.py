@@ -67,7 +67,7 @@ class Net2(nn.Module) :
     fc_units: numer of units in the first fully-connected layer
     """
     def __init__(self, dropout_rate=0.2, n_filters=10, filter_size=5, fc_units=50) :
-        super(Net4, self).__init__()
+        super(Net2, self).__init__()
         self.dropout_rate=dropout_rate
         self.n_filters = n_filters
         self.filter_size = filter_size #
@@ -81,7 +81,7 @@ class Net2(nn.Module) :
         "Stacks up the network layers, with the simplistic relu nonlinearity in-between."
         x1 = F.relu(F.max_pool2d(self.conv1(x), 2))
         x2 = F.relu(F.max_pool2d(self.conv2(x1), 2))
-        x3 = x2.view(batch_size, -1)
+        x3 = x2.view(-1, self.n_filters*2*7*7)
         x3 = F.relu(self.fc1(x3))
         output = F.dropout(x3, p=self.dropout_rate, training=self.training)
         output = F.log_softmax(self.fc2(output), dim=1)
@@ -112,7 +112,7 @@ class Net3(nn.Module) :
         x1 = F.relu(F.max_pool2d(self.conv1(x), 2))
         x2 = F.relu(F.max_pool2d(self.conv2(x1), 2))
         x3 = F.relu(F.max_pool2d(self.conv3(x2), 2))
-        x4 = x3.view(batch_size, -1)
+        x4 = x3.view(-1, self.n_filters*4*3*3)
         x4 = F.relu(self.fc1(x4))
         output = F.dropout(x4, p=self.dropout_rate, training=self.training)
         output = F.log_softmax(self.fc2(output), dim=1)
@@ -145,7 +145,7 @@ class Net4(nn.Module) :
         x2 = F.relu(F.max_pool2d(self.conv2(x1), 2))
         x3 = F.relu(F.max_pool2d(self.conv3(x2), 2))
         x4 = F.relu(F.max_pool2d(self.conv4(x3), 2))
-        x5 = x4.view(batch_size, -1)
+        x5 = x4.view(-1, self.n_filters*8*1*1)
         x5 = F.relu(self.fc1(x5))
         output = F.dropout(x5, p=self.dropoutrate, training=self.training)
         output = F.log_softmax(self.fc2(output), dim=1)

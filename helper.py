@@ -79,9 +79,9 @@ def plot_image_pairs(images1,images2,scores_net=[],scores_people=[], save=False,
         imshow(utils.make_grid([images1[i], images2[i]]))
         mytitle = 'Pair: {0:d}'.format(i)
         if len(scores_net)>0:
-            mytitle += ' net %.2f, ' % scores_net[i]
+            mytitle += '; net: %.2f, ' % scores_net[i]
         if len(scores_people)>0:
-            mytitle += 'human. %.2f' % scores_people[i]
+            mytitle += 'human: %.2f' % scores_people[i]
         if mytitle:
             plt.title(mytitle)
 

@@ -49,7 +49,6 @@ class Net1(nn.Module) :
         self.fc2 = nn.Linear(self.fc_units, 10)
 
     def forward(self, x) :
-        "Stacks up the network layers, with the simplistic relu nonlinearity in-between."
         x1 = F.relu(F.max_pool2d(self.conv1(x), 2))
         x2 = x1.view(-1, self.n_filters*14*14)
         x2 = F.relu(self.fc1(x2))
@@ -78,7 +77,6 @@ class Net2(nn.Module) :
         self.fc2 = nn.Linear(self.fc_units, 10)
 
     def forward(self, x) :
-        "Stacks up the network layers, with the simplistic relu nonlinearity in-between."
         x1 = F.relu(F.max_pool2d(self.conv1(x), 2))
         x2 = F.relu(F.max_pool2d(self.conv2(x1), 2))
         x3 = x2.view(-1, self.n_filters*2*7*7)

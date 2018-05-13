@@ -113,6 +113,14 @@ def test_viz(model, data_loader, nshow=10):
         imshow(utils.make_grid(images[i]))
         plt.title(str(pred[i]))
 
+def normalize(v):
+    """
+    Normalize v to [0,1]
+    """
+    v = v - v.min()
+    v = v / v.max()
+    return v
+
 def get_similarity_scores(images1, images2, model, layer='fc'):
     """
     Returns the similarity scores from a given model Layer
